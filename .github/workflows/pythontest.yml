@@ -27,14 +27,14 @@ jobs:
         pip install -r requirements.txt
     - name: Run Test Cases
       run: |
-        coverage run -m pytest test/*.py
+        coverage run -m pytest test/*.py --cov=./ --cov-report=xml
         coverage report
         coverage html
-        ls
     - name: Upload Coverage
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }} #required
+        file: ./coverage.xml #optional
         flags: unittests #optional
         name: codecov-umbrella #optional
         yml: ./codecov.yml #optional
