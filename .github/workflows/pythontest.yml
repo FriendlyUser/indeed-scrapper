@@ -30,14 +30,7 @@ jobs:
         coverage run -m pytest test/*.py
         coverage report
         coverage html
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} #required
-        file: ./coverage.xml #optional
-        flags: unittests #optional
-        name: codecov-umbrella #optional
-        yml: ./codecov.yml #optional
-        fail_ci_if_error: true #optional (default = false)
+        ls
     - name: Upload Coverage
       uses: codecov/codecov-action@v1
       with:
