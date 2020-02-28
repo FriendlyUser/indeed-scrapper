@@ -13,18 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - uses: codecov/codecov-action@v1
     - name: Set up Python 3.x
       uses: actions/setup-python@v1
       with:
         python-version: '3.6' # Semantic version range syntax or exact version of a Python version
         architecture: 'x64' # Optional - x64 or x86, defaults to x64
-        token: ${{ secrets.CODECOV_TOKEN }} #required
-        file: ./coverage.xml #optional
-        flags: unittests #optional
-        name: codecov-umbrella #optional
-        yml: ./codecov.yml #optional
-        fail_ci_if_error: true #optional (default = false)
     # You can test your matrix by printing the current Python version
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
@@ -37,4 +30,13 @@ jobs:
         coverage run -m pytest test/*.py
         coverage report
         coverage html
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} #required
+        file: ./coverage.xml #optional
+        flags: unittests #optional
+        name: codecov-umbrella #optional
+        yml: ./codecov.yml #optional
+        fail_ci_if_error: true #optional (default = false)
     
