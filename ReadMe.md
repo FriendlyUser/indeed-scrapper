@@ -1,0 +1,1 @@
+[![codecov](https://codecov.io/gh/FriendlyUser/indeed-scrapper/branch/master/graph/badge.svg?token=L370B7WWHW)](https://codecov.io/gh/FriendlyUser/indeed-scrapper)
