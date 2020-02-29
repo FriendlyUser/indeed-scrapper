@@ -1,4 +1,4 @@
-name: Setup python 3.6
+name: Pull Data and build
 
 on:
   push:
@@ -7,10 +7,9 @@ on:
     - '*.md'
 
 jobs:
-  build:
-
+  python:
+    name: Pull Data from Indeed
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.x
@@ -41,4 +40,23 @@ jobs:
         name: codecov-umbrella #optional
         yml: ./codecov.yml #optional
         fail_ci_if_error: true #optional (default = false)
+    - name: Uploading tex document
+      uses: actions/upload-artifact@v1
+      with:
+        name: indeed
+        path: sample.tex
+
+  build_latex:
+    name: Build Tex File
+    needs: python
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v1
+        with:
+          name: indeed
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: indeed/sample.tex
     
