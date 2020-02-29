@@ -18,6 +18,6 @@ def test_get_num_jobs():
 
 
 def test_get_num_jobs_fail():
-  indeed_url = get_indeed_url(make_namespace('Sofware developer king god monkey master'))
+  indeed_url = get_indeed_url(make_namespace(' adsadsadsa Sofware developer king god monkey master  asdadsadsadsadasdasdsadsad'))
   with pytest.raises(Exception) as e:
     assert get_num_jobs(indeed_url)
