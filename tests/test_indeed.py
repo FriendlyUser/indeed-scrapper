@@ -5,6 +5,7 @@ fake_args = argparse.Namespace()
 fake_args.input_city = 'Victoria'
 fake_args.input_state = 'BC'
 fake_args.input_quote = False
+fake_args.input_job = 'Software Developer'
 def test_get_num_jobs():
     indeed_url = get_indeed_url(fake_args)
     num_jobs = get_num_jobs(indeed_url)
