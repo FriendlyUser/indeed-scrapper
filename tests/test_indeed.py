@@ -20,7 +20,7 @@ def test_get_num_df():
   indeed_url = get_indeed_url(make_namespace('Software Developer'))
   num_jobs = get_num_jobs(indeed_url)
   job_df = get_jobs_data(indeed_url, num_jobs)
-  assert job_df.count > 0
+  assert job_df.count() > 0
 
 def test_get_num_jobs_fail():
   indeed_url = get_indeed_url(make_namespace('adsadsadsa Sofware developer king god monkey master  asdadsadsadsadasdasdsadsad'))
