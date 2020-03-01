@@ -59,9 +59,12 @@ jobs:
         uses: xu-cheng/latex-action@master
         with:
           root_file: indeed/sample.tex
+      - name: Checking directory files
+        run: |
+          ls
       - name: Uploading pdf document
         uses: actions/upload-artifact@v1
         with:
           name: tex
-          path: indeed/sample.pdf
+          path: sample.pdf
     
