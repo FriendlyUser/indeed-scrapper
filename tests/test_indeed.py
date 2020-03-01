@@ -10,9 +10,6 @@ def make_namespace(job):
   fake_args.input_state = 'BC'
   fake_args.input_quote = False
   fake_args.input_job = job
-  fake_args.email_from = os.environ.get('INDEED_EMAIL')
-  fake_args.email_password = os.environ.get('INDEED_PASSWORD')
-  fake_args.email_to = os.environ.get('TEST_EMAIL', 'davidli012345@gmail.com')
   return fake_args
 
 def test_get_num_jobs():

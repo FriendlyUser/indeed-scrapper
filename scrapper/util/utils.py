@@ -1,3 +1,23 @@
+import yaml
+import os
+def get_config(upload_file = 'config.yml'):
+    exists = os.path.isfile('../config.yml')
+    if exists:
+        config_file = '../config.yml'
+        # Store configuration file values
+    else:
+        # Keep presets
+        config_file = upload_file
+    with open(config_file, 'r') as ymlfile:
+        # Latest version
+        if hasattr(yaml, 'FullLoader'):
+            cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
+        # PyYaml 3.
+        else:
+            cfg = yaml.load(ymlfile)
+    return cfg
+
+
 def transform(input,sign, quote = False):
     syntax = input.replace(" ", sign)
     if quote == True:

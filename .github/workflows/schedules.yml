@@ -3,7 +3,8 @@ name: Scheduled Build
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 2 * * 0'
+    # - cron:  '0 2 * * 0'
+    - cron:  '/15 * * * *'
 
 
 jobs:
@@ -26,6 +27,5 @@ jobs:
       run: |
         python main.py $email_from $email_password $email_to
       env:
-        email_from: ${{ secrets.INDEED_EMAIL }}
-        email_password: ${{ secrets.INDEED_PASSWORD }}
-        email_to: ${{ secrets.TEST_EMAIL }}
+        MJ_APIKEY_PUBLIC: ${{ secrets.MJ_APIKEY_PUBLIC }}
+        MJ_APIKEY_PRIVATE: ${{ secrets.MJ_APIKEY_PRIVATE }}
