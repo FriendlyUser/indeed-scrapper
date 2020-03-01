@@ -63,5 +63,5 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: tex
-          path: sample.tex
+          path: indeed/sample.pdf
     
