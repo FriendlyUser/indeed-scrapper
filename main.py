@@ -1,6 +1,6 @@
 import scrapper
 import argparse
-from scrapper import get_num_jobs, get_jobs_data
+from scrapper import get_num_jobs, get_jobs_data, send_email
 from scrapper.util import get_indeed_url
 from scrapper import process_jobs
 def main(args):
@@ -9,9 +9,11 @@ def main(args):
   num_jobs = get_num_jobs(url_indeed)
   job_df = get_jobs_data(url_indeed, num_jobs, 'Victoria, BC')
   finalized_df = process_jobs(job_df)
-
-  finalized_df.to_csv('testing.csv')
-  print(finalized_df)
+  metadata = {
+    "url_indeed": url_indeed,
+    "num_total_indeed": num_jobs
+  }
+  send_email(args, finalized_df, metadata)
 
 if __name__ == '__main__':
     
