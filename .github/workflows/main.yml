@@ -5,6 +5,7 @@ on:
     paths-ignore:
     - 'docs/**'
     - '*.md'
+    - '.github/workflows/*.yml'
 
 jobs:
   python:
