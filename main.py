@@ -2,12 +2,16 @@ import scrapper
 import argparse
 from scrapper import get_num_jobs, get_jobs_data
 from scrapper.util import get_indeed_url
+from scrapper import process_jobs
 def main(args):
   url_indeed = get_indeed_url(args)
   # Get number of jobs from indeed
   num_jobs = get_num_jobs(url_indeed)
   job_df = get_jobs_data(url_indeed, num_jobs, 'Victoria, BC')
-  print(job_df)
+  finalized_df = process_jobs(job_df)
+
+  finalized_df.to_csv('testing.csv')
+  print(finalized_df)
 
 if __name__ == '__main__':
     

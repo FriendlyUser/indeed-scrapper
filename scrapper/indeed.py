@@ -27,14 +27,6 @@ def get_jobs_data(url_indeed, num_pages, default_location='Victoria, BC'):
   BASE_URL_indeed = 'https://ca.indeed.com'
   # create an empty dataframe
   job_df_indeed = pd.DataFrame()
-  # the date for today
-  now = datetime.now()
-  now_str = now.strftime("%m/%d/%Y")
-  # now_str_name=now.strftime('%m%d%Y')
-  # now_str_api=now.strftime('%Y-%d-%m')
-  ########################################
-  ##### Loop for all the total pages #####
-  ########################################
   for i in range(1, num_pages+1):
     # generate the URL
     url = ''.join([url_indeed, '&start=', str(i*10)])
@@ -71,7 +63,6 @@ def get_jobs_data(url_indeed, num_pages, default_location='Victoria, BC'):
           print('Location is missing')
       except Exception as e:
         print(e)
-        exit()
         continue
 
       job_df_indeed = job_df_indeed.append({

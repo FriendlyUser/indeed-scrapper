@@ -1,5 +1,6 @@
 from scrapper.indeed import get_num_jobs, get_jobs_data
 from scrapper.util import get_indeed_url
+from scrapper.analyze import process_jobs
 import argparse
 import pytest
 def make_namespace(job):
@@ -19,12 +20,18 @@ def test_get_num_jobs():
 def test_get_num_df():
   indeed_url = get_indeed_url(make_namespace('Software Developer'))
   num_jobs = get_num_jobs(indeed_url)
-  job_df = get_jobs_data(indeed_url, num_jobs)
-  assert job_df.shape[0] > 0
+  job_data_df = get_jobs_data(indeed_url, num_jobs)
+  assert job_data_df.shape[0] > 0
 
 def test_get_num_jobs_fail():
-  indeed_url = get_indeed_url(make_namespace('adsadsadsa Sofware developer king god monkey master  asdadsadsadsadasdasdsadsad'))
+  indeed_url = get_indeed_url(make_namespace('adsadsadsa Sofware developer king master  asdadsadsadsadasdasdsadsad'))
   with pytest.raises(Exception) as e:
+    print(e)
     assert get_num_jobs(indeed_url)
 
-job_info = "https://ca.indeed.com/job/senior-java-developer-6d6b91c475780e06"
+def test_get_full_data():
+  indeed_url = get_indeed_url(make_namespace('Senior Java Developer'))
+  num_jobs = get_num_jobs(indeed_url)
+  job_data_df = get_jobs_data(indeed_url, num_jobs)
+  full_job_data_df = process_jobs(job_data_df)
+  assert full_job_data_df.shape[0] > 5
