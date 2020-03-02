@@ -6,6 +6,7 @@ import base64
 from mailjet_rest import Client
 from scrapper.util import get_config
 from ast import literal_eval
+# TODO move to another package later
 def generate_attachments(jobs_df):
   # Convert pandas data read from csv back to lists
   # may not apply to read data
