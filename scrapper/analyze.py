@@ -78,14 +78,6 @@ def process_jobs(job_df_indeed):
   list_keywords = []
 
   for i in range(len(job_df_indeed)):
-    # empty list to store details for each job
-    # TODO figure out what todo with this empty list
-    required_type= []
-    required_skills = []
-    required_edu = []
-    required_major = []
-    required_keywords = []
-
     try:
       # get the HTML code from the URL
       job_url = job_df_indeed.iloc[i]['job_link']
@@ -122,7 +114,7 @@ def process_jobs(job_df_indeed):
       # Key Words
       list_keywords.append(process_type(job_text, keywords_lower, keywords_dic))
 
-      # All text
+      # Stop Words removal text
       # words = string.split(' ')
       # job_text = set(words) - set(stop_words) # drop stop words
       # list_text.append(list(job_text))
@@ -133,13 +125,11 @@ def process_jobs(job_df_indeed):
       list_edu.append(['Forbidden'])
       list_major.append(['Forbidden'])
       list_keywords.append(['Forbidden'])
-      # list_text.append('Forbidden')
-    # print(i)
 
   job_df_indeed['job_type'] = list_type
   job_df_indeed['job_skills'] = list_skill
   job_df_indeed['job_edu'] = list_edu
   job_df_indeed['job_major'] = list_major
   job_df_indeed['job_keywords'] = list_keywords
-  # job_df_indeed['job_text'] = list_text
+
   return job_df_indeed
