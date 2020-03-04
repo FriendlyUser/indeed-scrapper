@@ -1,4 +1,4 @@
-name: Scheduled Build
+name: Vancouver
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   python:
-    name: Pull Data from Indeed
+    name: Send Vancouver Data to Email
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -23,7 +23,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Test Cases
       run: |
-        python main.py $email_from $email_password $email_to
+        python main.py --input_kob Software Developer --input_city Vancouver --input_state BC
       env:
         MJ_APIKEY_PUBLIC: ${{ secrets.MJ_APIKEY_PUBLIC }}
         MJ_APIKEY_PRIVATE: ${{ secrets.MJ_APIKEY_PRIVATE }}
