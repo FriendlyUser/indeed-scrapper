@@ -8,12 +8,6 @@ from scrapper.util import get_config
 from ast import literal_eval
 # TODO move to another package later
 def generate_attachments(jobs_df):
-  # Convert pandas data read from csv back to lists
-  # may not apply to read data
-  jobs_df.loc[:,'job_type'] = jobs_df.loc[:,'job_type'].apply(lambda x: literal_eval(x))
-  jobs_df.loc[:,'job_skills'] = jobs_df.loc[:,'job_skills'].apply(lambda x: literal_eval(x))
-  jobs_df.loc[:,'job_edu'] = jobs_df.loc[:,'job_edu'].apply(lambda x: literal_eval(x))
-  jobs_df.loc[:,'job_keywords'] = jobs_df.loc[:,'job_keywords'].apply(lambda x: literal_eval(x))
   list_type = jobs_df['job_type'].tolist()
   list_skill = jobs_df['job_skills'].tolist()
   list_edu = jobs_df['job_edu'].tolist()
