@@ -64,7 +64,7 @@ jobs:
         run: |
           ls
       - name: Uploading pdf document
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: tex
           path: sample.pdf

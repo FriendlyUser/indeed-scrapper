@@ -7,7 +7,7 @@ on:
 
 jobs:
   python:
-    name: Send Vancouver Data to Email
+    name: Send Civil Data to Email
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -23,7 +23,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Test Cases
       run: |
-        python main.py --input_job Civil Engineer --input_city Vancouver --input_state BC
+        python main.py --input_job "Civil Engineer" --input_city Vancouver --input_state BC
       env:
         MJ_APIKEY_PUBLIC: ${{ secrets.MJ_APIKEY_PUBLIC }}
         MJ_APIKEY_PRIVATE: ${{ secrets.MJ_APIKEY_PRIVATE }}
